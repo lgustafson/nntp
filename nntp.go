@@ -314,7 +314,8 @@ func (c *Conn) Overview(begin, end int64) ([]MessageOverview, error) {
 		}
 		overview.Lines, err = strconv.Atoi(ss[7])
 		if err != nil {
-			return nil, ProtocolError("bad line count '" + ss[7] + "'in line:" + line)
+			overview.Lines = 0
+			//return nil, ProtocolError("bad line count '" + ss[7] + "'in line:" + line)
 		}
 		overview.Extra = append([]string{}, ss[8:]...)
 		result = append(result, overview)
